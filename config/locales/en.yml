@@ -1,0 +1,8 @@
+en:
+  hello: "Hello world"
+  query_report:
+    filters:
+      title:
+        contains: Title
+      paid:
+        equals: Paid
