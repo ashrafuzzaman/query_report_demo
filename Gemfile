@@ -5,9 +5,6 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -40,3 +37,6 @@ gem 'jquery-rails'
 #gem 'bootstrap-sass', '~> 2.3.2.1'
 gem "query_report", "~> 1.0.1"
 #gem 'query_report', :path => '/home/jitu/projects/query_report'
+
+gem 'sqlite3', group: :development
+gem 'pg', group: :production

@@ -67,6 +67,7 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
+    pg (0.15.1)
     polyamorous (0.6.3)
       activerecord (>= 3.0)
     polyglot (0.3.3)
@@ -144,6 +145,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
+  pg
   query_report (~> 1.0.1)
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
