@@ -37,9 +37,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'bootstrap-sass', '~> 2.3.2.1'
-# gem "query_report", "~> 1.0.0"
+#gem 'bootstrap-sass', '~> 2.3.2.1'
+gem "query_report", "~> 1.0.1"
 gem 'query_report', :path => '/home/jitu/projects/query_report'
-
-#gem 'ransack'
-#gem 'kaminari'
