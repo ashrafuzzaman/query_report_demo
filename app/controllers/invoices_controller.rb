@@ -8,7 +8,7 @@ class InvoicesController < ApplicationController
   def index
     @invoices = Invoice.scoped
 
-    reporter(@invoices) do
+    reporter(@invoices, template_class: 'PdfReportTemplate') do
       filter :title, type: :text, default: 'Invoice'
           filter :invoiced_on, type: :date, default: [2.weeks.ago.to_date.to_s(:db), Date.current.to_s(:db)]
       filter :paid, type: :boolean
