@@ -11,18 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828112826) do
+ActiveRecord::Schema.define(:version => 20130902033121) do
 
   create_table "invoices", :force => true do |t|
     t.string   "title"
     t.float    "total_paid"
     t.float    "total_charged"
     t.boolean  "paid"
-    t.string   "received_by"
     t.date     "invoiced_on"
     t.date     "paid_on"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "received_by_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

@@ -1,3 +1,15 @@
+PATH
+  remote: /home/jitu/projects/query_report
+  specs:
+    query_report (1.0.1)
+      google_visualr (>= 2.1)
+      gruff
+      kaminari
+      prawn
+      rails (>= 3.0.0)
+      ransack
+      rmagick
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -76,14 +88,6 @@ GEM
     prawn (0.12.0)
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.2)
-    query_report (1.0.1)
-      google_visualr (>= 2.1)
-      gruff
-      kaminari
-      prawn
-      rails (>= 3.0.0)
-      ransack
-      rmagick
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -149,7 +153,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
-  query_report (~> 1.0.1)
+  query_report!
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3

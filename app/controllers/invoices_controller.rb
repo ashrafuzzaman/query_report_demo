@@ -9,16 +9,20 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.scoped
 
     reporter(@invoices) do
-      filter :title, type: :text
-      filter :created_at, type: :date, default: [5.months.ago.to_date.to_s(:db), 1.months.from_now.to_date.to_s(:db)]
+      filter :title, type: :text, default: 'Invoice'
+          filter :invoiced_on, type: :date, default: [2.weeks.ago.to_date.to_s(:db), Date.current.to_s(:db)]
       filter :paid, type: :boolean
 
       column :title do |invoice|
         link_to invoice.title, invoice
       end
+      column :invoiced_on
       column :total_paid
       column :total_charged
       column :paid
+      column :received_by_id do |invoice|
+        invoice.received_by.name
+      end
 
       column_chart('Unpaid VS Paid') do
         add 'Unpaid' do |query|
