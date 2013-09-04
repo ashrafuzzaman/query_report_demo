@@ -40,3 +40,4 @@ gem 'query_report', :path => '/home/jitu/projects/query_report'
 
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
+gem 'coderay'
