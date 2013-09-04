@@ -7,10 +7,5 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    change_table :invoices do |t|
-      t.integer :received_by_id
-    end
-    remove_column :invoices,  :received_by, :string
   end
 end

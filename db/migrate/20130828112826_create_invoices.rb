@@ -5,7 +5,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.float :total_paid
       t.float :total_charged
       t.boolean :paid
-      t.string :received_by
+      t.integer :received_by_id
       t.date :invoiced_on
       t.date :paid_on
 
