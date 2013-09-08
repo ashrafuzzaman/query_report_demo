@@ -37,9 +37,10 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'bootstrap-sass', '~> 2.3.2.1'
-gem "query_report", "~> 1.0.2"
+gem "query_report", "~> 1.0.4"
 #gem 'query_report', :path => '/home/jitu/projects/query_report'
 
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'coderay'
+gem 'bootstrap-datepicker-rails'
