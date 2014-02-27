@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(:version => 20130902033121) do
     t.float    "total_paid"
     t.float    "total_charged"
     t.boolean  "paid"
+    t.integer  "received_by_id"
     t.date     "invoiced_on"
     t.date     "paid_on"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "received_by_id"
   end
 
   create_table "users", :force => true do |t|
