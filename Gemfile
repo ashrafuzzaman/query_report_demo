@@ -45,3 +45,4 @@ gem 'pg', group: :production
 gem 'coderay'
 gem 'bootstrap-datepicker-rails'
 gem 'protected_attributes'
+gem 'rails_12factor', group: :production
