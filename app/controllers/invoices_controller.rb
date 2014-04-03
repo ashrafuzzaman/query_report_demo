@@ -20,7 +20,7 @@ class InvoicesController < ApplicationController
       column :total_charged
       column :paid
       column :received_by_id do |invoice|
-        invoice.received_by.name
+        invoice.received_by.try(:name)
       end
 
       column_chart('Unpaid VS Paid') do
@@ -62,7 +62,7 @@ class InvoicesController < ApplicationController
       column :total_charged
       column :paid
       column :received_by_id do |invoice|
-        invoice.received_by.name
+        invoice.received_by.try(:name)
       end
 
       column_chart('Unpaid VS Paid') do
