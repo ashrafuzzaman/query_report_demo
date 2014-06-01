@@ -42,3 +42,4 @@ gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'coderay'
 gem 'bootstrap-datepicker-rails'
+gem "letter_opener", :group => :development
