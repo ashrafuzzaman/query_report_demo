@@ -9,7 +9,7 @@ class InvoicesController < ApplicationController
 
     reporter(invoices, template_class: PdfReportTemplate) do
       filter :title, type: :text, default: 'Invoice'
-      filter :invoiced_on, type: :date, default: [2.weeks.ago.to_date.to_s(:db), Date.current.to_s(:db)]
+      filter :invoiced_on, type: :date
       filter :paid, type: :boolean
 
       column :title do |invoice|
@@ -20,19 +20,10 @@ class InvoicesController < ApplicationController
       column :total_charged
       column :paid
       column :received_by_id do |invoice|
-        invoice.received_by.name
+        invoice.received_by.try(:name)
       end
 
       column_chart('Unpaid VS Paid') do
-        add 'Unpaid' do |query|
-          (query.sum('total_charged').to_f - query.sum('total_paid').to_f).to_f
-        end
-        add 'Paid' do |query|
-          query.sum('total_paid').to_f
-        end
-      end
-
-      pie_chart('Unpaid VS Paid') do
         add 'Unpaid' do |query|
           (query.sum('total_charged').to_f - query.sum('total_paid').to_f).to_f
         end
@@ -60,7 +51,7 @@ class InvoicesController < ApplicationController
 
     reporter(invoices, template_class: PdfReportTemplate) do
       filter :title, type: :text, default: 'Invoice'
-      filter :invoiced_on, type: :date, default: [2.weeks.ago.to_date.to_s(:db), Date.current.to_s(:db)]
+      filter :invoiced_on, type: :date
       filter :paid, type: :boolean
 
       column :title do |invoice|
@@ -71,19 +62,10 @@ class InvoicesController < ApplicationController
       column :total_charged
       column :paid
       column :received_by_id do |invoice|
-        invoice.received_by.name
+        invoice.received_by.try(:name)
       end
 
       column_chart('Unpaid VS Paid') do
-        add 'Unpaid' do |query|
-          (query.sum('total_charged').to_f - query.sum('total_paid').to_f).to_f
-        end
-        add 'Paid' do |query|
-          query.sum('total_paid').to_f
-        end
-      end
-
-      pie_chart('Unpaid VS Paid') do
         add 'Unpaid' do |query|
           (query.sum('total_charged').to_f - query.sum('total_paid').to_f).to_f
         end
