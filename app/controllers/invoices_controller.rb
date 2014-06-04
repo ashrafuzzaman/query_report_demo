@@ -5,23 +5,17 @@ class InvoicesController < ApplicationController
   include QueryReport::Helper
 
   def index
-    invoices = Invoice.scoped
-
-    reporter(invoices, template_class: PdfReportTemplate) do
+    reporter(Invoice.scoped, template_class: PdfReportTemplate) do
       filter :title, type: :text, default: 'Invoice'
       filter :invoiced_on, type: :date
       filter :paid, type: :boolean
 
-      column :title do |invoice|
-        link_to invoice.title, invoice
-      end
-      column :invoiced_on
+      column(:title) { |invoice| link_to invoice.title, invoice }
+      column :invoiced_on, sortable: true
       column :total_paid
       column :total_charged
       column :paid
-      column :received_by_id do |invoice|
-        invoice.received_by.try(:name)
-      end
+      column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name)}
 
       column_chart('Unpaid VS Paid') do
         add 'Unpaid' do |query|
@@ -47,23 +41,17 @@ class InvoicesController < ApplicationController
   def load_code
     code = <<-EOF
   def index
-    invoices = Invoice.scoped
-
-    reporter(invoices, template_class: PdfReportTemplate) do
+    reporter(Invoice.scoped, template_class: PdfReportTemplate) do
       filter :title, type: :text, default: 'Invoice'
       filter :invoiced_on, type: :date
       filter :paid, type: :boolean
 
-      column :title do |invoice|
-        link_to invoice.title, invoice
-      end
-      column :invoiced_on
+      column(:title) { |invoice| link_to invoice.title, invoice }
+      column :invoiced_on, sortable: true
       column :total_paid
       column :total_charged
       column :paid
-      column :received_by_id do |invoice|
-        invoice.received_by.try(:name)
-      end
+      column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name)}
 
       column_chart('Unpaid VS Paid') do
         add 'Unpaid' do |query|
