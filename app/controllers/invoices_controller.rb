@@ -11,7 +11,7 @@ class InvoicesController < ApplicationController
       filter :paid, type: :boolean
 
       column(:title) { |invoice| link_to invoice.title, invoice }
-      column :invoiced_on, sortable: true
+      column :invoiced_on, sortable: true, pdf: { width: 65 }
       column :total_paid
       column :total_charged
       column :paid
@@ -47,7 +47,7 @@ class InvoicesController < ApplicationController
       filter :paid, type: :boolean
 
       column(:title) { |invoice| link_to invoice.title, invoice }
-      column :invoiced_on, sortable: true
+      column :invoiced_on, sortable: true, pdf: { width: 65 }
       column :total_paid
       column :total_charged
       column :paid

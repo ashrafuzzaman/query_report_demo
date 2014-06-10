@@ -14,7 +14,7 @@ users << User.create(first_name: 'A.K.M.', last_name: 'Ashrafuzzaman', email: 'a
 users << User.create(first_name: 'A.K.M.', last_name: 'Zahiduzzaman', email: 'zahid@gmail.com')
 users << User.create(first_name: 'Sharmin', last_name: 'Sultana', email: 'sharmin@gmail.com')
 
-1.upto(200) do |i|
+1.upto(50) do |i|
   total_paid = 100 + Random.rand(100)
   total_charged = 100 + Random.rand(100)
   invoiced_on = Random.rand(30).days.ago
