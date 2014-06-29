@@ -11,19 +11,17 @@ class InvoicesController < ApplicationController
       filter :paid, type: :boolean
 
       column(:title) { |invoice| link_to invoice.title, invoice }
-      column :invoiced_on, sortable: true, pdf: { width: 65 }
+      column :invoiced_on, sortable: true, pdf: {width: 65}
       column :total_paid
       column :total_charged
       column :paid
-      column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name)}
+      column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name) }
 
-      column_chart('Unpaid VS Paid') do
-        add 'Unpaid' do |query|
-          (query.sum('total_charged').to_f - query.sum('total_paid').to_f).to_f
-        end
-        add 'Paid' do |query|
-          query.sum('total_paid').to_f
-        end
+      chart(:pie, 'Unpaid VS Paid') do |chart|
+        chart.data = {unpaid: (query.sum('total_charged')),
+                      paid: query.sum('total_paid')}
+        chart.columns = {unpaid: 'Un paid', paid: 'Paid'}
+        # chart.label_column = {unpaid: 'Un paid', paid: 'Paid'}
       end
     end
   end
@@ -47,19 +45,16 @@ class InvoicesController < ApplicationController
       filter :paid, type: :boolean
 
       column(:title) { |invoice| link_to invoice.title, invoice }
-      column :invoiced_on, sortable: true, pdf: { width: 65 }
+      column :invoiced_on, sortable: true, pdf: {width: 65}
       column :total_paid
       column :total_charged
       column :paid
-      column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name)}
+      column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name) }
 
-      column_chart('Unpaid VS Paid') do
-        add 'Unpaid' do |query|
-          (query.sum('total_charged').to_f - query.sum('total_paid').to_f).to_f
-        end
-        add 'Paid' do |query|
-          query.sum('total_paid').to_f
-        end
+      chart(:pie, 'Unpaid VS Paid') do |chart|
+        chart.data = {unpaid: (query.sum('total_charged')),
+                      paid: query.sum('total_paid')}
+        chart.columns = {unpaid: 'Un paid', paid: 'Paid'}
       end
     end
   end

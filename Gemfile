@@ -35,7 +35,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'bootstrap-sass', '~> 2.3.2.1'
-gem "query_report", "~> 1.0.25"
+gem "query_report", "~> 1.1.1"
 # gem 'query_report', :path => '/home/jitu/projects/query_report'
 
 gem 'sqlite3', group: :development
