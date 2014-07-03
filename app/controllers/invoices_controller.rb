@@ -18,10 +18,7 @@ class InvoicesController < ApplicationController
       column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name) }
 
       chart(:pie, 'Unpaid VS Paid') do |chart|
-        chart.data = {unpaid: (query.sum('total_charged')),
-                      paid: query.sum('total_paid')}
-        chart.columns = {unpaid: 'Un paid', paid: 'Paid'}
-        # chart.label_column = {unpaid: 'Un paid', paid: 'Paid'}
+        chart.sum_with 'Un paid' => :total_charged, 'Paid' => :total_paid
       end
     end
   end
@@ -52,9 +49,7 @@ class InvoicesController < ApplicationController
       column(:received_by_id, sortable: true) { |invoice| invoice.received_by.try(:name) }
 
       chart(:pie, 'Unpaid VS Paid') do |chart|
-        chart.data = {unpaid: (query.sum('total_charged')),
-                      paid: query.sum('total_paid')}
-        chart.columns = {unpaid: 'Un paid', paid: 'Paid'}
+        chart.sum_with 'Un paid' => :total_charged, 'Paid' => :total_paid
       end
     end
   end
